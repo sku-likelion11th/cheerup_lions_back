@@ -8,7 +8,7 @@ class PhotoPost(models.Model):
 	photo = models.ImageField(upload_to='cheerup/images/%Y/%m/%d', blank=False, null=False)
 	hook_text = models.CharField(max_length=100, blank=True)
 	content = models.TextField()
-	create_at = models.DateTimeField(auto_now_add=True)
+	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
 
 	def __str__(self):
 		return f'[{self.pk}] :: {self.author}'
@@ -19,7 +19,7 @@ class Comment(models.Model):
 	anony_password = models.CharField(max_length=50, blank=False, null=False)
 	
 	content = models.TextField()
-	create_at = models.DateTimeField(auto_now_add=True)
+	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
 
 	post = models.ForeignKey(PhotoPost, on_delete=models.CASCADE)
 
@@ -31,7 +31,7 @@ class Message(models.Model):
 	anony_password = models.CharField(max_length=50, blank=False, null=False)
 
 	content = models.TextField()
-	create_at = models.DateTimeField(auto_now_add=True)
+	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
 
 	def __str__(self):
 		return f'[{self.pk}] :: {self.author}'
