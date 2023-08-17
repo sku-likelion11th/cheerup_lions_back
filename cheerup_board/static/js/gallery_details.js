@@ -36,3 +36,26 @@ function removePhoto(id) {
         }
     });
 }
+
+function removeComment(id) {
+    var checkpw = prompt('비밀번호 4자리를 입력하세요.');
+    var csrfToken = getCookie('csrftoken');
+
+    // AJAX 요청 생성
+    $.ajax({
+        url: '/comment/delete/'+id+'/',  // Django URL에 맞게 수정
+        method: 'POST',
+        headers: { 'X-CSRFToken': csrfToken },  // CSRF 토큰을 헤더에 포함
+        data: { "anony_password": checkpw },
+        dataType: 'json',
+        success: function(response) {
+            if (response.message){
+                location.reload();
+            }
+            console.log('삭제 실패');
+        },
+        error: function(xhr, status, error) {
+            console.error('에러:', error);
+        }
+    });
+}

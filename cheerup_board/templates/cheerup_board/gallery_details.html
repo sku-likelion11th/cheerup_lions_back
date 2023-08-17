@@ -57,8 +57,8 @@
                             <!-- etc.. 시간, 수정 삭제 -->
                             <div class="sub ">
                                 <span id="timedisplay ">{{ comment.create_at }}</span>
-                                <button onclick=" ">수정</button>
-                                <button>삭제</button>
+                                <!-- <button onclick=" ">수정</button> -->
+                                <button onclick="removeComment({{comment.pk}})">삭제</button>
                             </div>
                         </div>
                         {% endfor %}
@@ -66,10 +66,10 @@
                     </div>
                     <!-- 댓글 달기-->
                     <div class="write_chat">
-                        <form action="" id="detail_chatForm" class="d-flex justify-content-between align-items-center ">
+                        <form action="{% url 'board:board_detail' pk=photopost.id %}" method="POST" enctype="multipart/form-data" id="detail_chatForm" class="d-flex justify-content-between align-items-center ">
                             {% csrf_token %}
-                            <input type="password" maxlength="4" class="input-pw1 me-3 text-center" placeholder="비밀번호 입력" autocomplete="current-password">
-                            <input type="text" maxlength="30" class="input-text1" placeholder="댓글 작성하기">
+                            <input name="anony_password" type="password" maxlength="4" class="input-pw1 me-3 text-center" placeholder="비밀번호 입력" autocomplete="current-password">
+                            <input name="content" type="text" maxlength="30" class="input-text1" placeholder="댓글 작성하기">
                             <input type="submit" id="submitTime" class="input-submit1 ms-3" value="게시하기">
                         </form>
                     </div>
