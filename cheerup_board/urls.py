@@ -17,9 +17,8 @@ urlpatterns = [
 	path('comment/update/<int:pk>/', views.update_comment.as_view(), name='comment_update'),
 	path('comment/delete/<int:pk>/', views.delete_comment, name='comment_delete'),
 
-	path('message/create/', views.create_message.as_view(), name='message_create'),
 	path('message/update/<int:pk>/', views.update_message.as_view(), name='message_update'),
 	path('message/delete/<int:pk>/', views.delete_message, name='message_delete'),
-    path('message/list/', views.message_list.as_view(), name='message_list'), 
+    path('message/list/', views.MessageView.as_view(), name='message_list'), 
     
 ]

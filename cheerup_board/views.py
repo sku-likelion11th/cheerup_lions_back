@@ -1,7 +1,7 @@
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 import requests
-from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView, View
 from .models import PhotoPost, Comment, Message
 from django.urls import reverse_lazy, reverse
 from user_count import views
@@ -34,11 +34,11 @@ def index_page(request):
 class create_board(CreateView, ListView):
     template_name = 'cheerup_board/gallery.html'
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         object_list = PhotoPost.objects.all()
         return render(request, self.template_name, {'board': object_list})
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         photo = request.FILES.get('photo')
         anony_password = request.POST.get('anony_password')
         hook_text = request.POST.get('hook_text')
@@ -137,20 +137,28 @@ def delete_comment(request, pk): # have to make the password confirmation
 
 
 #---------------------------------------- message CRUD
-class create_message(CreateView):
-	model = Message
-	fields = ['author', 'anony_password', 'content', 'create_at']
-	template_name = 'cheerup_board/message_create.html'
+    
+class MessageView(View):
+    template_name = 'cheerup_board/cheerup_chat.html'
 
-	def get_success_url(self):
-		return reverse('board:message_list')
-	# it goes to message_list url (app_name:name)
+    def get(self, request):
+        messages = Message.objects.all()
+        return render(request, self.template_name, {'messages': messages})
+
+    def post(self, request):
+        author = get_api("https://nickname.hwanmoo.kr/?format=json&count=1")["words"][0]
+        anony_password = request.POST.get('anony_password')
+        content = request.POST.get('content')
+        anony_password_hashed = make_password(anony_password)
+        Message.objects.create(author=author, anony_password=anony_password_hashed, content=content)
+        
+        return redirect('board:message_list')
 
 
 class update_message(UpdateView):
 	model = Message
 	fields = ['author', 'anony_password', 'content']
-	template_name = 'cheerup_board/message_update.html'
+	template_name = 'cheerup_board/cheerup_chat.html'
 
 	def get_success_url(self):
 		return reverse('board:message_list')
@@ -162,10 +170,6 @@ def delete_message(request, pk): # have to make the password confirmation
     return redirect(reverse('board:message_list'))
 
 
-class message_list(ListView):
-	model = Message
-	context_object_name = 'messages' 
-	template_name = 'cheerup_board/cheerup_chat.html'
 # {% for message in messages %} use like this in the template
 
 

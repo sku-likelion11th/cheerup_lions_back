@@ -49,7 +49,8 @@
 
         <footer class="sbaggroM">
             <div class="container">
-                <form action="{% url 'board:message_create' %}" method="POST" id="chatForm" class="d-flex justify-content-between align-items-center ">
+                <form action="{% url 'board:message_list' %}" method="POST" enctype="multipart/form-data" id="chatForm" class="d-flex justify-content-between align-items-center ">
+                    {% csrf_token %}
                     <input name="anony_password" type="password" maxlength="4" class="input-pw me-3 text-center" placeholder="비밀번호 입력" autocomplete="current-password">
                     <input name="content" type="text" maxlength="30" class="input-text flex-grow-1 flex-shrink-3" placeholder="응원의 메세지 작성하기!">
                     <input type="submit" id="submitTime" class="input-submit ms-3" value="게시하기">
@@ -59,7 +60,7 @@
     </div>
 
     <script src="{% static 'js/media.js'%}"></script>
-    <script src="{% static 'js/cheerup_chat.js'%}"></script>
+    <!-- <script src="{% static 'js/cheerup_chat.js'%}"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm " crossorigin="anonymous "></script>
 </body>
 
