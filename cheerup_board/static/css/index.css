@@ -74,3 +74,7 @@ body {
     -webkit-box-shadow: 7px 9px 21px 1px rgba(0,0,0,0.69);
     -moz-box-shadow: 7px 9px 21px 1px rgba(0,0,0,0.69);
 }
+
+.main-btn-size {
+    font-size: 20px;
+}
