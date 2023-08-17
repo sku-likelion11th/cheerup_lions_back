@@ -30,6 +30,7 @@ class create_board(CreateView):
 
 	def get_success_url(self):
 		return reverse('board:list')
+	# it goes to board/list url (app_name/name)
 
 
 class update_board(UpdateView):
@@ -50,7 +51,7 @@ class delete_board(DeleteView):
 class board_list(ListView):
 	model = PhotoPost
 	context_object_name = 'board' 
-	template_name = ''
+	template_name = 'cheerup_board/index.html'
 # {% for post in board %} use like this in the template
 
 class board_detail(DetailView):
@@ -58,5 +59,5 @@ class board_detail(DetailView):
     template_name = '' 
     
     def get_object(self, queryset=None):
-        id = self.kwargs.get('id') 
+        id = self.kwargs['id']
         return PhotoPost.objects.get(id=id)
