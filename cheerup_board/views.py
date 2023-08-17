@@ -4,6 +4,7 @@ import requests
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from .models import PhotoPost, Comment, Message
 from django.urls import reverse_lazy, reverse
+from user_count import views
 
 # Create your views here.
 # api 호출용 함수
@@ -20,6 +21,10 @@ def test(request):
 	anonymous_name = get_api("https://nickname.hwanmoo.kr/?format=json&count=1")
 	print(anonymous_name["words"][0])
 	return HttpResponse("<h1>Hi</h1>")
+
+
+def main_page(request):
+	return views.Counter(request)
 
 #---------------------------------------- Board CRUD
 class create_board(CreateView):
