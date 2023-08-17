@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url(" {% static 'img/main.JPG'%} "); ">
+<body style="background-image: url(' {% static "img/main.JPG"%} '); ">
     <div class="container mainFont ">
         <header class=" mt-4 d-flex justify-content-between ">
             <!-- 로고 -->
@@ -33,7 +33,7 @@
         <div class="centerElement d-flex flex-column justify-content-center align-items-center ">
             <section class="givemt text-white text-center ">
                 <span class="timeout ">해커톤 종료까지</span>
-                <div id="countdown "></div>
+                <div id="countdown"></div>
             </section>
 
             <section class="text-center text-white mt-5 ">
