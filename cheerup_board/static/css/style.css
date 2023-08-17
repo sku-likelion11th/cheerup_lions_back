@@ -66,6 +66,15 @@
     .givemt {
         margin-top: 40px;
     }
+    .mainLogo {
+        text-align: center;
+    }
+    .title {
+        flex-direction: column;
+    }
+    .mainTitle {
+        text-align: center;
+    }
 }
 
 @media (max-width: 650px) {
@@ -90,5 +99,8 @@
     }
     .mainbtn button {
         width: 140px;
+    }
+    .mainTitle {
+        text-align: center;
     }
 }

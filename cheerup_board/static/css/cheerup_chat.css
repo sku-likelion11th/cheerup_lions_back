@@ -122,13 +122,18 @@ footer form input {
     color: white;
 }
 
-@media (min-width: 768px) and (max-width: 1280px) {}
+@media (min-width: 768px) and (max-width: 1280px) {
+    .chat_nickname {
+        margin-top: 10px;
+    }
+}
 
 @media (min-width: 650px) and (max-width: 767.98px) {}
 
-@media (min-width: 451px) and (max-width: 650px) {
+@media (min-width: 451px) and (max-width: 767.98px) {
     .chat_nickname {
         font-size: 15px;
+        margin-top: 10px;
     }
     .chat_content {
         font-size: 18px;
@@ -171,4 +176,8 @@ footer form input {
 
 .pw_confirm {
     display: none;
+}
+
+.sub button {
+    font-size: 18px;
 }
