@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>응원하기</title>
-    <link rel="stylesheet" href="{% static "css/cheerup_chat.css"%}">
-    <link rel="stylesheet" href="{% static "css/style.css"%}">
+    <link rel="stylesheet" href="{% static 'css/cheerup_chat.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -26,27 +27,24 @@
                 <div class="mainTitle text-white">
                     멋쟁이사자처럼 대학 11기<br/>해커톤을 응원해!
                 </div>
-                <div class="myArticleBtn sbaggroM">
-                    <button>내가 쓴 응원글 보기</button>
-                </div>
             </div>
         </header>
 
         <section class="mt-4 sbaggroM">
             {% for message in messages %}
-                <div class="chatbox mb-4">
-                    <div class="chat_nickname text-white">{{ message.author }}</div><br/>
-                    <div class="chat_content">
-                        <span>{{ message.content }}</span>
-                        <div class="sub">
-                            <span id="timedisplay"></span>
-                            <button onclick="checkpasswordRemove()">삭제</button>
-                        </div>
+            <div class="chatbox mb-4">
+                <div class="chat_nickname text-white">{{ message.author }}</div><br/>
+                <div class="chat_content">
+                    <span>{{ message.content }}</span>
+                    <div class="sub">
+                        <span id="timedisplay"></span>
+                        <button onclick="checkpasswordRemove()">삭제</button>
                     </div>
-                    <span class="pw_confirm"></span>
                 </div>
+                <span class="pw_confirm"></span>
+            </div>
             {% endfor %}
-            
+
         </section>
 
         <footer class="sbaggroM">
