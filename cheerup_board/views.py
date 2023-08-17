@@ -6,6 +6,7 @@ from .models import PhotoPost, Comment, Message
 from django.urls import reverse_lazy, reverse
 from user_count import views
 from django.contrib.auth.hashers import make_password, check_password
+from django.http import JsonResponse
 
 # Create your views here.
 # api 호출용 함수
@@ -57,7 +58,7 @@ class update_board(UpdateView, ListView):
 	
 	def dispatch(self, request, *args, **kwargs):
 		post = self.get_object()
-		if check_password(post.anony_password, self.request.POST.get('anony_password')):
+		if check_password(self.request.POST.get('anony_password'), post.anony_password):
 			return super().dispatch(request, *args, **kwargs)
 		else:
 			return Message("비밀번호 틀림")
@@ -68,7 +69,7 @@ class update_board(UpdateView, ListView):
 
 def delete_board(request, pk): # have to make the password confirmation
     post = get_object_or_404(PhotoPost, pk=pk)
-    if check_password(post.anony_password, request.POST.get('annoy_password')):
+    if check_password(request.POST.get('annoy_password'), post.anony_password):
         post.delete()
     return redirect(reverse('board:board_list'))
 
@@ -166,9 +167,12 @@ class update_message(UpdateView):
 
 def delete_message(request, pk): # have to make the password confirmation
     message = get_object_or_404(Message, pk=pk)
-    message.delete()
-    return redirect(reverse('board:message_list'))
-
+    print(message.anony_password)
+    print(request.POST.get('annoy_password'))
+    if check_password(request.POST.get('annoy_password'), message.anony_password):
+        message.delete()
+        return JsonResponse({'message': '삭제성공'})
+    return JsonResponse({'message': '삭제실패'})
 
 # {% for message in messages %} use like this in the template
 

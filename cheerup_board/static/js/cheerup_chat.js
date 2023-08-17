@@ -1,73 +1,36 @@
-$(document).ready(function() {
-    $('#chatForm').submit(function(event) { // 폼 제출
-        event.preventDefault(); // 폼 기본 동작 중단
-
-        const password = $('.input-pw').val();
-        const message = $('.input-text').val();
-
-        // 둘 중 하나라도 비어있으면
-        if (password === '' || message === '') {
-            alert('비밀번호나 메시지가 비어있습니다.');
-            if (password === '') {
-                $('.input-pw').focus();
-            } else {
-                $('.input-text').focus();
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
-            return;
         }
-
-        console.log(password, message);
-
-        const data = {
-            password: password, // 비번
-            message: message // text
-        };
-
-        $.ajax({
-            type: 'POST',
-            url: '/',
-            data: JSON.stringify(data), // 비번, 메세지 전달
-            contentType: 'application/json',
-            success: function(response) {
-                // 성공
-                console.log('성공');
-                // 폼 초기화
-                $('.input-pw').val('');
-                $('.input-text').val('');
-            },
-            error: function(error) {
-                // 실패 시 동작
-                console.error('데이터 전송 실패:', error);
-            }
-        });
-    });
-});
-
-
-// 수정, 삭제 비밀번호 입력시,,,,, 맞나이게?
-correctpw = document.querySelector('.pw_confirm').textContent;
-console.log(correctpw);
-
-function checkpasswordEdit() {
-    checkpw = prompt('비밀번호 4자리를 입력하세요.');
-    console.log(checkpw);
-
-    if (correctpw === checkpw) {
-        console.log('수정 ㄱㄱ');
-
-    } else {
-        alert('비밀번호가 일치하지 않습니다.');
     }
+    return cookieValue;
 }
 
-function checkpasswordRemove() {
-    checkpw = prompt('비밀번호 4자리를 입력하세요.');
-    console.log(checkpw);
+function checkpasswordRemove(id) {
+    var checkpw = prompt('비밀번호 4자리를 입력하세요.');
+    var csrfToken = getCookie('csrftoken');
 
-    if (correctpw === checkpw) {
-        console.log('삭제 ㄱㄱ');
-
-    } else {
-        alert('비밀번호가 일치하지 않습니다.');
-    }
+    // AJAX 요청 생성
+    $.ajax({
+        url: '/message/delete/'+id+'/',  // Django URL에 맞게 수정
+        method: 'POST',
+        headers: { 'X-CSRFToken': csrfToken },  // CSRF 토큰을 헤더에 포함
+        data: { "annoy_password": checkpw },
+        dataType: 'json',
+        success: function(response) {
+            console.log('서버 응답:', response.message);
+            location.reload();
+        },
+        error: function(xhr, status, error) {
+            console.error('에러:', error);
+        }
+    });
 }
