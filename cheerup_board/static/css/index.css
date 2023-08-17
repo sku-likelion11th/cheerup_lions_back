@@ -1,0 +1,31 @@
+body {
+    background-image: url('../static/img/main.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.timeout {
+    font-size: 35px;
+}
+
+#countdown {
+    font-size: 80px;
+}
+
+.fighting {
+    font-size: 30px;
+}
+
+.mainbtn button {
+    width: 180px;
+    background-color: #1658D6;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+
+.mainTitle1 {
+    font-size: 45px;
+}

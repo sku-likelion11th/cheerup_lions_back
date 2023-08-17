@@ -24,7 +24,10 @@ def test(request):
 
 
 def main_page(request):
-	return views.Counter(request)
+	return views.user_count(request)
+
+def index_page(request):
+    return render(request, "cheerup_board/index.html")
 
 #---------------------------------------- Board CRUD
 class create_board(CreateView):
@@ -55,13 +58,13 @@ def delete_board(request, pk): # have to make the password confirmation
 class board_list(ListView):
 	model = PhotoPost
 	context_object_name = 'board' 
-	template_name = 'cheerup_board/board_list.html'
+	template_name = 'cheerup_board/gallery.html'
 # {% for post in board %} use like this in the template
 
 
 class board_detail(DetailView):
     model = PhotoPost
-    template_name = 'cheerup_board/board_detail.html'
+    template_name = 'cheerup_board/gallery_details.html'
     
     def get_object(self, queryset=None):
         id = self.kwargs['pk']
@@ -118,7 +121,7 @@ def delete_comment(request, pk): # have to make the password confirmation
 #---------------------------------------- message CRUD
 class create_message(CreateView):
 	model = Message
-	fields = ['author', 'anony_password', 'content']
+	fields = ['author', 'anony_password', 'content', 'create_at']
 	template_name = 'cheerup_board/message_create.html'
 
 	def get_success_url(self):
@@ -144,7 +147,7 @@ def delete_message(request, pk): # have to make the password confirmation
 class message_list(ListView):
 	model = Message
 	context_object_name = 'messages' 
-	template_name = 'cheerup_board/message_list.html'
+	template_name = 'cheerup_board/cheerup_chat.html'
 # {% for message in messages %} use like this in the template
 
 

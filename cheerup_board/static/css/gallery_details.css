@@ -1,0 +1,145 @@
+body {
+    background-color: rgb(22, 88, 214, 0.85) !important;
+}
+
+.detail_all {
+    background-color: rgb(255, 255, 255);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+#detail_chatForm input {
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.input-pw1 {
+    width: 120px;
+    background-color: #5382DA;
+}
+
+.input-pw1::placeholder {
+    color: white;
+}
+
+.input-submit1 {
+    background-color: #1658D6;
+    color: white;
+}
+
+.detail_title {
+    font-size: 25px;
+    margin-bottom: 0.5rem;
+    margin-left: 10px;
+}
+
+.detail_chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.detail-chating {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px 10px 10px 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.write_chat {
+    padding-top: 10px;
+    border-top: 3px solid #9E9E9E
+}
+
+.scroll-chat {
+    max-height: 500px;
+    overflow-y: scroll;
+    padding: 15px;
+}
+
+
+/* 스크롤바 모양 */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+ ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background-color: rgba(163, 163, 163, 0.5);
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+}
+
+.scroll-chat button,
+#timedisplay {
+    background: none;
+    border: none;
+    color: #939393;
+    font-size: 13px;
+}
+
+.sub {
+    text-align: right;
+    margin-bottom: -5px;
+}
+
+.fixedname {
+    font-size: 13px;
+    color: gray;
+}
+
+.sub button {
+    padding: 0 3px;
+}
+
+.mainTitle {
+    text-align: right;
+}
+
+
+/* 반응형 */
+
+@media (max-width:1200px) {
+    .detail_all {
+        flex-direction: column;
+    }
+    .detail_img {
+        margin-bottom: 20px;
+    }
+    .input-text1 {
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .mainTitle {
+        text-align: center;
+    }
+    .input-pw1,
+    .input-submit1 {
+        width: 50px;
+        padding: 10px 0;
+    }
+    .input-text1 {
+        width: 165px;
+    }
+}

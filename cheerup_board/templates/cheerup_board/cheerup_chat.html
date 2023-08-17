@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>응원하기</title>
+    <link rel="stylesheet" href="{% static "css/cheerup_chat.css"%}">
+    <link rel="stylesheet" href="{% static "css/style.css"%}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mainFont">
+        <header>
+            <!-- 로고 -->
+            <div class="mainLogo mt-4">
+                <a href="{% url 'board:main'%}" class="text-decoration-none" style="color:inherit">
+                    <p>CHEER UP!</p>
+                    <span>LIONS</span>
+                </a>
+            </div>
+            <!-- Title, btn -->
+            <div class="title d-flex justify-content-between align-items-center mt-2">
+                <div class="mainTitle text-white">
+                    멋쟁이사자처럼 대학 11기<br/>해커톤을 응원해!
+                </div>
+                <div class="myArticleBtn sbaggroM">
+                    <button>내가 쓴 응원글 보기</button>
+                </div>
+            </div>
+        </header>
+
+        <section class="mt-4 sbaggroM">
+            {% for message in messages %}
+                <div class="chatbox mb-4">
+                    <div class="chat_nickname text-white">{{ message.author }}</div><br/>
+                    <div class="chat_content">
+                        <span>{{ message.content }}</span>
+                        <div class="sub">
+                            <span id="timedisplay"></span>
+                            <button onclick="checkpasswordRemove()">삭제</button>
+                        </div>
+                    </div>
+                    <span class="pw_confirm"></span>
+                </div>
+            {% endfor %}
+            
+        </section>
+
+        <footer class="sbaggroM">
+            <div class="container">
+                <form action="{% url 'board:message_create' %}" method="POST" id="chatForm" class="d-flex justify-content-between align-items-center ">
+                    <input name="anony_password" type="password" maxlength="4" class="input-pw me-3 text-center" placeholder="비밀번호 입력" autocomplete="current-password">
+                    <input name="content" type="text" maxlength="30" class="input-text flex-grow-1 flex-shrink-3" placeholder="응원의 메세지 작성하기!">
+                    <input type="submit" id="submitTime" class="input-submit ms-3" value="게시하기">
+                </form>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{% static 'js/media.js'%}"></script>
+    <script src="{% static 'js/cheerup_chat.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm " crossorigin="anonymous "></script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+body {
+    background-color: rgb(22, 88, 214, 0.85) !important;
+}
+
+
+/* Header */
+
+.myArticleBtn button {
+    background: white;
+    color: #1658D6;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+}
+
+
+/* section */
+
+section {
+    height: 600px;
+    padding: 20px;
+    overflow-y: auto;
+    margin-bottom: 130px;
+}
+
+
+/* 스크롤바 모양 */
+
+ ::-webkit-scrollbar {
+    width: 8px;
+}
+
+ ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background-color: rgb(22, 88, 214, 0.5);
+}
+
+.chatbox {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.chatbox div {
+    border-radius: 15px;
+}
+
+.chat_nickname {
+    font-size: 20px;
+    background-color: #1658d6;
+    padding: 10px 20px;
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    display: inline-block;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chat_content {
+    font-size: 25px;
+    background-color: white;
+    padding: 20px;
+}
+
+.sub {
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.chatbox button {
+    background: none;
+    border: none;
+    color: #939393;
+    font-size: 20px;
+}
+
+
+/* form */
+
+footer {
+    height: 100px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer form {
+    height: 100px;
+}
+
+footer form input {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.input-pw,
+.input-submit {
+    width: 140px;
+}
+
+.input-pw {
+    background-color: #5382DA;
+}
+
+.input-pw::placeholder {
+    color: white;
+}
+
+.input-text {
+    background: #e1e1e1;
+}
+
+.input-submit {
+    background-color: #1658D6;
+    color: white;
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {}
+
+@media (min-width: 650px) and (max-width: 767.98px) {}
+
+@media (min-width: 451px) and (max-width: 650px) {
+    .chat_nickname {
+        font-size: 15px;
+    }
+    .chat_content {
+        font-size: 18px;
+    }
+    .chatbox button {
+        font-size: 15px;
+    }
+    .sub {
+        margin-top: 0;
+    }
+    .input-pw,
+    .input-submit {
+        width: 50px;
+        padding: 10px 0;
+    }
+}
+
+@media (max-width:450px) {
+    .chat_nickname {
+        font-size: 15px;
+    }
+    .chat_content {
+        font-size: 18px;
+    }
+    .chatbox button {
+        font-size: 15px;
+    }
+    .sub {
+        margin-top: 0;
+    }
+    .input-pw,
+    .input-submit {
+        width: 50px;
+        padding: 10px 0;
+    }
+    .input-text {
+        width: 219px;
+    }
+}
+
+.pw_confirm {
+    display: none;
+}

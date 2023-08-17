@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SBAggro2';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/sandbox/SBAggroMedium.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/sandbox/SBAggroMedium.eot?#iefix') format('embedded-opentype'), url('https://cdn.jsdelivr.net/gh/webfontworld/sandbox/SBAggroMedium.woff2') format('woff2'), url('https://cdn.jsdelivr.net/gh/webfontworld/sandbox/SBAggroMedium.woff') format('woff'), url('https://cdn.jsdelivr.net/gh/webfontworld/sandbox/SBAggroMedium.ttf') format("truetype");
+    font-display: swap;
+}
+
+
+/* 폰트 */
+
+.sbaggroM {
+    font-family: 'SBAggro2';
+}
+
+.mainFont {
+    font-family: 'PyeongChangPeace-Bold';
+}
+
+
+/* 로고, 타이틀 */
+
+.mainLogo p {
+    font-size: 20px;
+    margin-bottom: -10px;
+}
+
+.mainLogo span {
+    font-size: 36px;
+}
+
+.mainTitle {
+    font-size: 50px;
+}
+
+
+/* 반응형 */
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .mainTitle {
+        font-size: 40px;
+    }
+    .chat_nickname {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 767.98px) {
+    .mainTitle {
+        font-size: 30px;
+    }
+    #countdown {
+        font-size: 60px;
+    }
+    .fighting {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 650px) {
+    .mainTitle {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    .mainLogo {
+        text-align: center;
+    }
+    .title {
+        flex-direction: column;
+    }
+    #countdown {
+        font-size: 50px;
+    }
+    .fighting {
+        font-size: 20px;
+    }
+    section {
+        margin-top: 30px;
+    }
+    .mainbtn button {
+        width: 140px;
+    }
+}
