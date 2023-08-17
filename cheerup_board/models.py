@@ -32,3 +32,6 @@ class Message(models.Model):
 
 	content = models.TextField()
 	create_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return f'[{self.pk}] :: {self.author}'
