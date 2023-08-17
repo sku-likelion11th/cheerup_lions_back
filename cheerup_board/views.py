@@ -26,33 +26,37 @@ def test(request):
 class create_board(CreateView):
 	model = PhotoPost
 	fields = ['author', 'anony_password', 'photo', 'hook_text' ,'content']
-	template_name = 'insert template url'
+	template_name = ''
 
 	def get_success_url(self):
-		return reverse('board:detail', kwargs={'pk': self.object.pk})
+		return reverse('board:list')
 
 
 class update_board(UpdateView):
 	model = PhotoPost
 	fields = ['author', 'anony_password', 'photo', 'hook_text' ,'content']
-	template_name = 'insert template url'
+	template_name = ''
 
 	def get_success_url(self):
-		return reverse('board:detail', kwargs={'pk': self.object.pk})
+		return reverse('board:list')
 
 
 class delete_board(DeleteView):
     model = PhotoPost
-    template_name = 'insert template url'
+    template_name = ''
     success_url = reverse_lazy('board:list')
 
 
 class board_list(ListView):
 	model = PhotoPost
 	context_object_name = 'board' 
-	template_name = 'insert template url'
-
+	template_name = ''
+# {% for post in board %} use like this in the template
 
 class board_detail(DetailView):
-	model = PhotoPost
-	template_name = 'insert template url'
+    model = PhotoPost
+    template_name = '' 
+    
+    def get_object(self, queryset=None):
+        id = self.kwargs.get('id') 
+        return PhotoPost.objects.get(id=id)
