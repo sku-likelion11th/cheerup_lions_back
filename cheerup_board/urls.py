@@ -8,10 +8,9 @@ urlpatterns = [
     path('', views.main_page),
     path('mainpage/', views.index_page, name='main'),
     
-    path('board/create/', views.create_board.as_view(), name='board_create'),
+    path('board/create/', views.create_board.as_view(), name='board_list'),
 	path('board/update/<int:pk>/', views.update_board.as_view(), name='board_update'),
 	path('board/delete/<int:pk>/', views.delete_board, name='board_delete'),
-    path('board/list/', views.board_list.as_view(), name='board_list'),
     path('board/list/<int:pk>/', views.board_detail.as_view(), name='board_detail'),
     
 	path('comment/create/', views.create_comment.as_view(), name='comment_create'),

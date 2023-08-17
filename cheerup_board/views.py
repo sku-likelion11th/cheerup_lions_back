@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, FormView, CreateView, Upd
 from .models import PhotoPost, Comment, Message
 from django.urls import reverse_lazy, reverse
 from user_count import views
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
 # api 호출용 함수
@@ -30,20 +31,36 @@ def index_page(request):
     return render(request, "cheerup_board/index.html")
 
 #---------------------------------------- Board CRUD
-class create_board(CreateView):
-	model = PhotoPost
-	fields = ['author', 'anony_password', 'photo', 'hook_text' ,'content']
-	template_name = 'cheerup_board/board_create.html' # where to show
+class create_board(CreateView, ListView):
+    template_name = 'cheerup_board/gallery.html'
 
-	def get_success_url(self):
-		return reverse('board:board_list')
-	# it goes to board_list url (app_name:name)
+    def get(self, request, *args, **kwargs):
+        object_list = PhotoPost.objects.all()
+        return render(request, self.template_name, {'board': object_list})
+
+    def post(self, request, *args, **kwargs):
+        photo = request.FILES.get('photo')
+        anony_password = request.POST.get('anony_password')
+        hook_text = request.POST.get('hook_text')
+
+        anony_password_hashed = make_password(anony_password)
+        PhotoPost.objects.create(photo=photo, anony_password=anony_password_hashed, hook_text=hook_text)
+        
+        return redirect('board:board_list')
 
 
-class update_board(UpdateView):
+
+class update_board(UpdateView, ListView):
 	model = PhotoPost
 	fields = ['author', 'anony_password', 'photo', 'hook_text' ,'content']
 	template_name = 'cheerup_board/board_update.html' # same with all models => leave the current data and make them edit
+	
+	def dispatch(self, request, *args, **kwargs):
+		post = self.get_object()
+		if check_password(post.anony_password, self.request.POST.get('anony_password')):
+			return super().dispatch(request, *args, **kwargs)
+		else:
+			return Message("비밀번호 틀림")
 
 	def get_success_url(self):
 		return reverse('board:board_list')
@@ -51,7 +68,8 @@ class update_board(UpdateView):
 
 def delete_board(request, pk): # have to make the password confirmation
     post = get_object_or_404(PhotoPost, pk=pk)
-    post.delete()
+    if check_password(post.anony_password, request.POST.get('annoy_password')):
+        post.delete()
     return redirect(reverse('board:board_list'))
 
 
