@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %} ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9 " crossorigin="anonymous ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
         <section class="sbaggroM d-flex justify-content-between detail_all ">
             <div class="trash">
-                <button onclick="removePhoto()">
+                <button onclick="removePhoto({{photopost.id}})">
                     <i class="bi bi-trash3-fill"></i>
                 </button>
             </div>
@@ -66,6 +67,7 @@
                     <!-- 댓글 달기-->
                     <div class="write_chat">
                         <form action="" id="detail_chatForm" class="d-flex justify-content-between align-items-center ">
+                            {% csrf_token %}
                             <input type="password" maxlength="4" class="input-pw1 me-3 text-center" placeholder="비밀번호 입력" autocomplete="current-password">
                             <input type="text" maxlength="30" class="input-text1" placeholder="댓글 작성하기">
                             <input type="submit" id="submitTime" class="input-submit1 ms-3" value="게시하기">

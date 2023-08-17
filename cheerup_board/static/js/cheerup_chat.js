@@ -23,7 +23,7 @@ function checkpasswordRemove(id) {
         url: '/message/delete/'+id+'/',  // Django URL에 맞게 수정
         method: 'POST',
         headers: { 'X-CSRFToken': csrfToken },  // CSRF 토큰을 헤더에 포함
-        data: { "annoy_password": checkpw },
+        data: { "anony_password": checkpw },
         dataType: 'json',
         success: function(response) {
             console.log('서버 응답:', response.message);

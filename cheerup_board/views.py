@@ -45,6 +45,8 @@ class create_board(CreateView, ListView):
         hook_text = request.POST.get('hook_text')
 
         anony_password_hashed = make_password(anony_password)
+        print(anony_password)
+        print(check_password(anony_password, anony_password_hashed))
         PhotoPost.objects.create(photo=photo, anony_password=anony_password_hashed, hook_text=hook_text)
         
         return redirect('board:board_list')
@@ -69,9 +71,11 @@ class update_board(UpdateView, ListView):
 
 def delete_board(request, pk): # have to make the password confirmation
     post = get_object_or_404(PhotoPost, pk=pk)
-    if check_password(request.POST.get('annoy_password'), post.anony_password):
+    print(request.POST.get('anony_password'))
+    if check_password(request.POST.get('anony_password'), post.anony_password):
         post.delete()
-    return redirect(reverse('board:board_list'))
+        return JsonResponse({'message': True })
+    return JsonResponse({'message': False })
 
 
 class board_list(ListView):
@@ -84,23 +88,24 @@ class board_list(ListView):
 class board_detail(DetailView):
     model = PhotoPost
     template_name = 'cheerup_board/gallery_details.html'
-    
+    context_object_name = 'photopost'
+
     def get_object(self, queryset=None):
         id = self.kwargs['pk']
         return PhotoPost.objects.get(id=id)
-    
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(post=self.get_object())
+        return context
 
-#---------------------------------------- comment CRUD
-
-class create_comment(CreateView):
-	model = Comment
-	fields = ['author', 'anony_password', 'content']
-	template_name = 'cheerup_board/comment_create.html'
-
-	def get_success_url(self):
-		return reverse('board:board_list')
-	# it goes to board_list url (app_name:name)
+    def post(self, request, *args, **kwargs):
+        content = request.POST.get('content')
+        if content:
+            photopost = self.get_object()
+            comment = Comment(post=photopost, content=content)
+            comment.save()
+        return redirect(reverse('board:board_list'))
 
 
 class update_comment(UpdateView):
@@ -167,9 +172,7 @@ class update_message(UpdateView):
 
 def delete_message(request, pk): # have to make the password confirmation
     message = get_object_or_404(Message, pk=pk)
-    print(message.anony_password)
-    print(request.POST.get('annoy_password'))
-    if check_password(request.POST.get('annoy_password'), message.anony_password):
+    if check_password(request.POST.get('anony_password'), message.anony_password):
         message.delete()
         return JsonResponse({'message': '삭제성공'})
     return JsonResponse({'message': '삭제실패'})
