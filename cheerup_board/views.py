@@ -26,10 +26,10 @@ def test(request):
 
 
 def main_page(request):
-	return views.user_count(request)
+	return views.user_count(request) # including redirect to index.html 
 
-def index_page(request):
-    return render(request, "cheerup_board/index.html")
+# def index_page(request):
+#     return render(request, "cheerup_board/index.html")
 
 #---------------------------------------- Board CRUD
 class create_board(CreateView, ListView):

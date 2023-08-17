@@ -5,8 +5,8 @@ from . import views
 app_name = "board"
 urlpatterns = [
 	path('111/', views.test),
-    path('', views.main_page),
-    path('mainpage/', views.index_page, name='main'),
+    path('', views.main_page, name='main'),
+    # path('mainpage/', views.index_page, name='main'),
     
     path('board/create/', views.create_board.as_view(), name='board_list'),
 	path('board/update/<int:pk>/', views.update_board.as_view(), name='board_update'),
