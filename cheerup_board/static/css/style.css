@@ -63,6 +63,9 @@
     .fighting {
         font-size: 25px;
     }
+    .givemt {
+        margin-top: 40px;
+    }
 }
 
 @media (max-width: 650px) {
