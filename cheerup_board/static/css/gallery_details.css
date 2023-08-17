@@ -7,6 +7,7 @@ body {
     padding: 20px 30px;
     border-radius: 15px;
     margin-top: 20px;
+    position: relative;
 }
 
 #detail_chatForm input {
@@ -142,4 +143,19 @@ body {
     .input-text1 {
         width: 165px;
     }
+}
+
+.trash {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.trash i {
+    font-size: 25px;
+}
+
+.trash button {
+    background: none;
+    border: none;
 }

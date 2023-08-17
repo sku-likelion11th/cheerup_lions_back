@@ -1,7 +1,7 @@
 // 해커톤 종료 카운트 다운
 const countdownElement = document.getElementById('countdown'); // display
 
-const targetDate = new Date(2023, 7, 19, 7, 0, 0); // 종료 시각
+const targetDate = new Date(2023, 7, 19, 6, 0, 0); // 종료 시각
 
 function updateCountdown() {
     const now = new Date(); // 현 시각

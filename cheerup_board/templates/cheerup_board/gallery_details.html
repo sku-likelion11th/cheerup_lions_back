@@ -1,59 +1,67 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>사진 갤러리</title>
-    <link rel="stylesheet" href="{% static "css/gallery_details.css"%}">
-    <link rel="stylesheet" href="{% static "css/style.css"%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/gallery_details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9 " crossorigin="anonymous ">
 </head>
 
 <body>
-    <div class="container mainFont">
-        <header class="d-flex justify-content-between mt-4">
+    <div class="container mainFont ">
+        <header class="d-flex justify-content-between mt-4 ">
             <!-- 로고 -->
-            <div class="mainLogo">
-                <a href="{% url 'board:main'%}" class="text-decoration-none" style="color:inherit">
+            <div class="mainLogo ">
+                <a href="{% url 'board:main'%} " class="text-decoration-none " style="color:inherit ">
                     <p>CHEER UP!</p>
                     <span>LIONS</span>
                 </a>
             </div>
             <!-- Title, btn -->
-            <div class="title">
-                <div class="mainTitle text-white">
+            <div class="title ">
+                <div class="mainTitle text-white ">
                     멋쟁이사자처럼 대학 11기<br/>해커톤 현장
                 </div>
             </div>
         </header>
 
-        <section class="sbaggroM d-flex justify-content-between detail_all">
+        <section class="sbaggroM d-flex justify-content-between detail_all ">
+            <div class="trash">
+                <button onclick="removePhoto()">
+                    <i class="bi bi-trash3-fill"></i>
+                </button>
+            </div>
             <!-- 사진 부분 -->
-            <div class="detail_img">
-                <p class="detail_title">{{ photopost.hook_text }}</p>
-                <div class="img-container"><img src="{{ photopost.photo.url }}" alt="" width="100%"></div>
+            <div class="detail_img ">
+                <p class="detail_title ">{{ photopost.hook_text }}</p>
+                <div class="img-container">
+                    <img src="{{ photopost.photo.url }} " alt=" " width="100% ">
+                </div>
             </div>
             <!-- 댓글 -->
             <div class="detail_chat">
-                <p class="detail_title">댓글</p>
-                <div class="d-flex flex-column">
+                <p class="detail_title ">댓글</p>
+                <div class="d-flex flex-column ">
                     <!-- 달린 댓글 -->
-                    <div class="scroll-chat">
-
+                    <div class="scroll-chat ">
                         {% for comment in photopost.comment_set.all %}
-                        <div class="detail-chating">
-                            <div class="fixedname">{{ comment.author }}</div>
+                        <div class="detail-chating ">
+                            <div class="fixedname ">{{ comment.author }}</div>
                             <div>{{ comment.content }}</div>
                             <!-- etc.. 시간, 수정 삭제 -->
-                            <div class="sub">
-                                <span id="timedisplay">{{ comment.create_at }}</span>
-                                <button onclick="">수정</button>
+                            <div class="sub ">
+                                <span id="timedisplay ">{{ comment.create_at }}</span>
+                                <button onclick=" ">수정</button>
                                 <button>삭제</button>
                             </div>
                         </div>
                         {% endfor %}
-                        
+
                     </div>
                     <!-- 댓글 달기-->
                     <div class="write_chat">
@@ -63,14 +71,14 @@
                             <input type="submit" id="submitTime" class="input-submit1 ms-3" value="게시하기">
                         </form>
                     </div>
-
                 </div>
             </div>
         </section>
     </div>
 
-    <script src="{% static 'js/gallerymedia.js'%}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="{% static 'js/gallerymedia.js'%} "></script>
+    <script src="{% static 'js/gallery_details.js'%} "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm " crossorigin="anonymous "></script>
 </body>
 
 </html>
