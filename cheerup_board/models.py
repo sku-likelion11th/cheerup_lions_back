@@ -10,6 +10,9 @@ class PhotoPost(models.Model):
 	content = models.TextField()
 	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
 
+	class Meta: # ordring by newer first
+		ordering = ["-create_at"]
+
 	def __str__(self):
 		return f'[{self.pk}] :: {self.author}'
 
@@ -20,6 +23,9 @@ class Comment(models.Model):
 	
 	content = models.TextField()
 	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
+
+	class Meta: # ordring by older first
+		ordering = ["create_at"]
 
 	post = models.ForeignKey(PhotoPost, on_delete=models.CASCADE)
 
@@ -32,6 +38,9 @@ class Message(models.Model):
 
 	content = models.TextField()
 	create_at = models.DateTimeField(auto_now_add=True, verbose_name="등록 시간")
+
+	class Meta: # ordring by newer first
+		ordering = ["-create_at"]
 
 	def __str__(self):
 		return f'[{self.pk}] :: {self.author}'
