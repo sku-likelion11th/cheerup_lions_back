@@ -51,12 +51,12 @@ class delete_board(DeleteView):
 class board_list(ListView):
 	model = PhotoPost
 	context_object_name = 'board' 
-	template_name = 'cheerup_board/index.html'
+	template_name = 'cheerup_board/board_list.html'
 # {% for post in board %} use like this in the template
 
 class board_detail(DetailView):
     model = PhotoPost
-    template_name = '' 
+    template_name = 'cheerup_board/board_detail.html'
     
     def get_object(self, queryset=None):
         id = self.kwargs['id']
