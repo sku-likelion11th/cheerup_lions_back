@@ -12,8 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
-<body style="background-image: url(' {% static "img/main.JPG"%}'); ">
-    <div class="container mainFont ">
+<!-- <body style="background-image: url(' {% static "img/main.JPG"%}'); "> -->
+<body>
+    <div class="container mainFont mainContent">
         <header class=" mt-4 d-flex justify-content-between ">
             <!-- 로고 -->
             <div class="mainLogo ">
@@ -56,8 +57,11 @@
             </section>
         </div>
     </div>
-
+    <div class="cover"></div>
+    <div class="background-image"></div>
+    <div class="black-background"></div>
     <script src="{% static 'js/time.js' %}"></script>
+    <script src="{% static 'js/main_background.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm " crossorigin="anonymous "></script>
 </body>
 
