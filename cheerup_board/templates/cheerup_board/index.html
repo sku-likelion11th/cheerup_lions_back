@@ -25,13 +25,15 @@
             <!-- 로고 -->
             <div class="mainLogo ">
                 <a href="{% url 'board:main'%}" class="text-decoration-none" style="color:inherit">
-                    <p>CHEER UP!</p>
-                    <span>LIONS</span>
+                    <div class="shadow-effect">
+                        <p>CHEER UP!</p>
+                        <span>LIONS</span>
+                    </div>
                 </a>
             </div>
             <!-- Title, btn -->
             <div>
-                <div class="mainTitle mainTitle1 text-white text-end ">
+                <div class="mainTitle mainTitle1 text-white text-end shadow-effect">
                     멋쟁이사자처럼<br/>대학 11기<br/>해커톤을<br/>응원해!
                 </div>
             </div>
@@ -39,24 +41,24 @@
 
         <div class="centerElement d-flex flex-column justify-content-center align-items-center ">
             <section class="givemt text-white text-center ">
-                <span class="timeout ">해커톤 종료까지</span>
-                <div id="countdown"></div>
+                <span class="timeout shadow-effect">해커톤 종료까지</span>
+                <div class="shadow-effect" id="countdown"></div>
             </section>
 
             <section class="text-center text-white mt-5 ">
-                <div class="fighting mb-3 ">"우리 조금만 더 힘내봅시다 여러분! "</div>
+                <div class="fighting mb-3 shadow-effect">"우리 조금만 더 힘내봅시다 여러분! "</div>
                 <div class="mainbtn d-flex justify-content-center ">
                     <a href="{% url 'board:board_list' %} " class="text-white text-decoration-none ">
-                        <button class="text-white mx-2 d-flex align-items-center justify-content-center ">
-                        <i class="bi bi-camera-fill "></i>
-                        <span class="ms-2 ">사진 게시판</span>
+                        <button class="text-white mx-2 d-flex align-items-center justify-content-center btn-shadow">
+                        <i class="bi bi-camera-fill fs-5"></i>
+                        <span class="ms-2 fs-5">사진 게시판</span>
                     </button>
                     </a>
 
                     <a href="{% url 'board:message_list' %} " class="text-white text-decoration-none ">
-                        <button class="text-white mx-2 d-flex align-items-center justify-content-center ">
-                            <i class="bi bi-pencil-fill "></i>
-                            <span class="ms-2 ">응원하기</span>
+                        <button class="text-white mx-2 d-flex align-items-center justify-content-center btn-shadow">
+                            <i class="bi bi-pencil-fill fs-5"></i>
+                            <span class="ms-2 fs-5">응원하기</span>
                         </button>
                     </a>
                 </div>

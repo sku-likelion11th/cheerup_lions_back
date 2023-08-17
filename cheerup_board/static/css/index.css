@@ -65,3 +65,12 @@ body {
     font-size: 45px;
 }
 
+.shadow-effect {
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.55);
+}
+
+.btn-shadow {
+    box-shadow: 7px 9px 21px 1px rgba(0,0,0,0.69);
+    -webkit-box-shadow: 7px 9px 21px 1px rgba(0,0,0,0.69);
+    -moz-box-shadow: 7px 9px 21px 1px rgba(0,0,0,0.69);
+}
