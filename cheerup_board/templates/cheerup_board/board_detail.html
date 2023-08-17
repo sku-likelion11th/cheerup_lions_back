@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .bs-example{
+            margin: 20px;
+        }
+    </style>
+
+
 </head>
 <body>
 
     <h1>{{ photopost.hook_text }}</h1>  <!-- do not use capital -->
-    <img src="{{ photopost.photo.url }}" alt="Photo">
+    <img src="{{ photopost.photo.url }}" alt="Photo" loading="lazy"> <!-- use lazy for optimization -->
     {% for comment in photopost.comment_set.all %}
         <h1>{{ comment.author }}</h1>
         <h1>{{ comment.content }}</h1>
     {% endfor %}
+
 </body>
 </html>
+
