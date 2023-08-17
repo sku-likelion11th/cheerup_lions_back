@@ -1,5 +1,5 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 import requests
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from .models import PhotoPost, Comment, Message
@@ -35,16 +35,16 @@ class create_board(CreateView):
 class update_board(UpdateView):
 	model = PhotoPost
 	fields = ['author', 'anony_password', 'photo', 'hook_text' ,'content']
-	template_name = '' # same with all models => leave the current data and make them edit
+	template_name = 'cheerup_board/board_update.html' # same with all models => leave the current data and make them edit
 
 	def get_success_url(self):
 		return reverse('board:board_list')
 
 
-class delete_board(DeleteView):
-    model = PhotoPost
-    template_name = 'cheerup_board/hide_url.html'
-    success_url = reverse_lazy('board:board_list')
+def delete_board(request, pk): # have to make the password confirmation
+    post = get_object_or_404(PhotoPost, pk=pk)
+    post.delete()
+    return redirect(reverse('board:board_list'))
 
 
 class board_list(ListView):
@@ -59,7 +59,7 @@ class board_detail(DetailView):
     template_name = 'cheerup_board/board_detail.html'
     
     def get_object(self, queryset=None):
-        id = self.kwargs['id']
+        id = self.kwargs['pk']
         return PhotoPost.objects.get(id=id)
     
 
@@ -79,16 +79,16 @@ class create_comment(CreateView):
 class update_comment(UpdateView):
 	model = Comment
 	fields = ['author', 'anony_password', 'content']
-	template_name = ''
+	template_name = 'cheerup_board/comment_update.html'
 
 	def get_success_url(self):
 		return reverse('board:board_list')
 
 
-class delete_comment(DeleteView):
-    model = Comment
-    template_name = 'cheerup_board/hide_url.html'
-    success_url = reverse_lazy('board:board_list')
+def delete_comment(request, pk): # have to make the password confirmation
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.delete()
+    return redirect(reverse('board:board_list'))
 
 
 # don't use list view on comment, it appeared in PhotoPost detail view
@@ -124,16 +124,16 @@ class create_message(CreateView):
 class update_message(UpdateView):
 	model = Message
 	fields = ['author', 'anony_password', 'content']
-	template_name = ''
+	template_name = 'cheerup_board/message_update.html'
 
 	def get_success_url(self):
 		return reverse('board:message_list')
 
 
-class delete_message(DeleteView):
-    model = Message
-    template_name = 'cheerup_board/hide_url.html'
-    success_url = reverse_lazy('board:message_list')
+def delete_message(request, pk): # have to make the password confirmation
+    message = get_object_or_404(Message, pk=pk)
+    message.delete()
+    return redirect(reverse('board:message_list'))
 
 
 class message_list(ListView):
