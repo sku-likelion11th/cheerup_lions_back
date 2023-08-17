@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>사진 갤러리</title>
-    <link rel="stylesheet" href="{% static "css/gallery.css"%}">
-    <link rel="stylesheet" href="{% static "css/style.css"%}">
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
@@ -37,10 +38,10 @@
         <section>
             <div class="gallery">
                 {% for post in board %}
-                    <div class="imagebox">
-                        <a href="{% url 'board:board_detail' post.pk %}"><img src="{{ post.photo.url }}" alt="{{ post.hook_text }}"></a>
-                    </div>
-        
+                <div class="imagebox">
+                    <a href="{% url 'board:board_detail' post.pk %}"><img src="{{ post.photo.url }}" alt="{{ post.hook_text }}"></a>
+                </div>
+
                 {% endfor %}
             </div>
         </section>
@@ -56,13 +57,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="modalform">
-                        <form action="" id="chatForm" class="d-flex flex-column justify-content-between align-items-center ">
+                        <form action="" id="chatForm" class="d-flex flex-column justify-content-between align-items-center">
                             <input type="file" name="fileUpload">
-                            <div class="d-flex justify-content-between align-items-center ">
+                            <div class="d-flex justify-content-between align-items-center sbaggroM">
                                 <input type="password" maxlength="4" class="input-pw2 me-3 text-center" placeholder="비밀번호" autocomplete="current-password">
                                 <input type="text" maxlength="30" class="input-text2" placeholder="제목 작성하기">
                                 <input type="submit" id="submitTime" class="input-submit2 ms-3" value="게시">
                             </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -63,6 +63,15 @@ body {
     }
 }
 
+@media (max-width: 650px) {
+    .input-text2 {
+        width: 140px;
+    }
+    .input-pw2 {
+        width: 90px;
+    }
+}
+
 
 /* modal */
 
@@ -71,18 +80,22 @@ body {
     background-color: white;
 }
 
+.modal-body {
+    padding: 0 20px 20px 20px !important;
+}
+
 .modalform form {
     height: 100px;
 }
 
 .modalform form input {
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 15px;
 }
 
 .input-pw2 {
-    width: 140px;
+    width: 95px;
 }
 
 .input-pw2 {
