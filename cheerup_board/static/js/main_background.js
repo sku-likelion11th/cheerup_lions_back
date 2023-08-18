@@ -1,10 +1,10 @@
 const images = [
-    '/static/img/IMG_1.jpg',
-    '/static/img/IMG_2.jpg',
-    '/static/img/IMG_3.jpg',
-    '/static/img/IMG_4.jpg',
-    '/static/img/IMG_5.jpg',
-    '/static/img/IMG_6.jpg'
+    '/static/img/IMG_1.JPG',
+    '/static/img/IMG_2.JPG',
+    '/static/img/IMG_3.JPG',
+    '/static/img/IMG_4.JPG',
+    '/static/img/IMG_5.JPG',
+    '/static/img/IMG_6.JPG'
   ];
   
   const backgroundImage = document.querySelector('.background-image');

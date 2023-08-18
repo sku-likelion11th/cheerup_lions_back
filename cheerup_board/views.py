@@ -19,11 +19,6 @@ def get_api(url):
 		return None
 
 # 랜덤 닉네임 api https://nickname.hwanmoo.kr/?format=json&count=1
-def test(request):
-	anonymous_name = get_api("https://nickname.hwanmoo.kr/?format=json&count=1")
-	print(anonymous_name["words"][0])
-	return HttpResponse("<h1>Hi</h1>")
-
 
 def main_page(request):
 	return views.user_count(request) # including redirect to index.html 
@@ -45,8 +40,6 @@ class create_board(CreateView, ListView):
         hook_text = request.POST.get('hook_text')
 
         anony_password_hashed = make_password(anony_password)
-        print(anony_password)
-        print(check_password(anony_password, anony_password_hashed))
         PhotoPost.objects.create(photo=photo, anony_password=anony_password_hashed, hook_text=hook_text)
         
         return redirect('board:board_list')
