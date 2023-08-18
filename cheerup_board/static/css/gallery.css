@@ -10,6 +10,10 @@ body {
     padding: 8px 15px;
 }
 
+.fileinput {
+    padding-left: 30px !important;
+}
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

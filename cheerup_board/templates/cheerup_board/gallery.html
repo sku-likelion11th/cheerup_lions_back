@@ -59,7 +59,7 @@
                     <div class="modalform">
                         <form method="post" enctype="multipart/form-data" action="{% url 'board:board_list' %}" id="chatForm" class="d-flex flex-column justify-content-between align-items-center ">
                             {% csrf_token %}
-                            <input type="file" name="photo">
+                            <input class="fileinput" type="file" name="photo">
                             <div class="d-flex justify-content-between align-items-center ">
                                 <input type="password" name="anony_password" maxlength="4" class="input-pw2 me-3 text-center" placeholder="비밀번호" autocomplete="current-password">
                                 <input type="text" name="hook_text" maxlength="30" class="input-text2" placeholder="제목 작성하기">

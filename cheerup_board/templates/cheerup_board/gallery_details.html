@@ -46,7 +46,7 @@
             </div>
             <!-- 댓글 -->
             <div class="detail_chat">
-                <p class="detail_title ">댓글</p>
+                <p class="detail_title1">댓글</p>
                 <div class="d-flex flex-column ">
                     <!-- 달린 댓글 -->
                     <div class="scroll-chat ">
@@ -56,7 +56,7 @@
                             <div>{{ comment.content }}</div>
                             <!-- etc.. 시간, 수정 삭제 -->
                             <div class="sub ">
-                                <span id="timedisplay ">{{ comment.create_at }}</span>
+                                <span class="timedisplay ">{{ comment.create_at }}</span>
                                 <!-- <button onclick=" ">수정</button> -->
                                 <button onclick="removeComment({{comment.pk}})">삭제</button>
                             </div>

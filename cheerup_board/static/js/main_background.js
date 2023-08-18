@@ -1,10 +1,6 @@
 const images = [
-    '/static/img/IMG_1.JPG',
-    '/static/img/IMG_2.JPG',
-    '/static/img/IMG_3.JPG',
-    '/static/img/IMG_4.JPG',
-    '/static/img/IMG_5.JPG',
-    '/static/img/IMG_6.JPG'
+    '/static/img/start2.jpg',
+    '/static/img/start.jpg',
   ];
   
 const backgroundImage = document.querySelector('.background-image');
@@ -18,6 +14,7 @@ fetch('/get_images/')
 })
 
 function changeBackgroundImage() {
+
   backgroundImage.style.backgroundImage = `url('${images[currentImageIndex]}')`;
   backgroundImage.style.opacity = 1;
   
@@ -30,4 +27,3 @@ function changeBackgroundImage() {
 }
 
 changeBackgroundImage();
-  
