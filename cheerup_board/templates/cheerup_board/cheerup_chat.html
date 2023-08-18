@@ -37,7 +37,7 @@
                 <div class="chat_content">
                     <span>{{ message.content }}</span>
                     <div class="sub">
-                        <span id="timedisplay"></span>
+                        <span class="timedisplay">{{ message.create_at }}</span>
                         <button onclick="checkpasswordRemove({{message.id}})">삭제</button>
                     </div>
                 </div>

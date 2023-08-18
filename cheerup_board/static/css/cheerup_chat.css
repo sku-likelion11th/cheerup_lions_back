@@ -16,6 +16,13 @@ body {
 
 /* section */
 
+.timedisplay {
+    background: none;
+    border: none;
+    color: #939393;
+    font-size: 15px;
+}
+
 section {
     height: 600px;
     padding: 20px 0;

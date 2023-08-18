@@ -10,6 +10,13 @@ body {
     padding: 8px 15px;
 }
 
+.timedisplay {
+    background: none;
+    border: none;
+    color: #939393;
+    font-size: 10px;
+}
+
 .fileinput {
     padding-left: 30px !important;
 }
