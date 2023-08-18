@@ -56,7 +56,7 @@
                             <div>{{ comment.content }}</div>
                             <!-- etc.. 시간, 수정 삭제 -->
                             <div class="sub ">
-                                <span class="timedisplay ">{{ comment.create_at }}</span>
+                                <span class="timedisplay ">{{ comment.create_at|date:"y.m.d a f"}}</span>
                                 <!-- <button onclick=" ">수정</button> -->
                                 <button onclick="removeComment({{comment.pk}})">삭제</button>
                             </div>
