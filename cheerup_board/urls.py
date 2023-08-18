@@ -17,6 +17,7 @@ urlpatterns = [
 
 	path('message/update/<int:pk>/', views.update_message.as_view(), name='message_update'),
 	path('message/delete/<int:pk>/', views.delete_message, name='message_delete'),
-    path('message/list/', views.MessageView.as_view(), name='message_list'), 
-    
+	path('message/list/', views.MessageView.as_view(), name='message_list'), 
+	path('get_images/', views.get_image_list),
+	path('get_messages/', views.get_message)
 ]

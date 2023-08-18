@@ -9,6 +9,17 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse
 
 # Create your views here.
+
+def get_image_list(request):
+	images = PhotoPost.objects.values_list('photo', flat=True)
+	images_urls = [photo for photo in images]
+	return JsonResponse({'images': images_urls})
+
+def get_message(request):
+	messages_obj = Message.objects.values_list('content', flat=True)
+	messages = [content for content in messages_obj]
+	return JsonResponse({'messages': messages})
+
 # api 호출용 함수
 def get_api(url):
 	response = requests.get(url)

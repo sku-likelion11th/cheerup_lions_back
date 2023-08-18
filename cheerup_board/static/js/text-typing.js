@@ -33,6 +33,20 @@ var wordflick = function () {
     }, speed);
 };
 
+function fetchAndAddWords() {
+    fetch('/get_messages/')
+        .then(response => response.json())
+        .then(data => {
+            const fetchedMessages = data.messages;
+            words.push(...fetchedMessages);
+            len = words.length; // 새로운 길이로 업데이트
+        })
+        .catch(error => {
+            console.error('Error fetching messages:', error);
+        });
+}
+
 $(document).ready(function () {
     wordflick();
+    fetchAndAddWords();
 });
